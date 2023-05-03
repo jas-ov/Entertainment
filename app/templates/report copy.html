@@ -1,0 +1,57 @@
+<!-- this is going to look WACKY i am in the midst of working on it. Sorry :( - Sylvie  -->
+
+{% extends 'base.html' %}
+
+    {% block body %}
+    
+    {% if report %}
+    
+    {{moment(report.createdate).calendar()}} by {{report.author.username}} 
+    {% if report.modifydate %}
+        modified {{moment(report.modifydate).calendar()}}
+    {% endif %}
+    <br>
+        {% if report.author == current_user %}
+            <a data-toggle="tooltip" data-placement="top" title="Delete form" href="/form/delete/{{form.id}}">
+                <img width="40" class="bottom-image" src="/static/delete.png">
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Edit form" href="/form/edit/{{form.id}}">
+                <img width="40" class="bottom-image" src="/static/edit.png">
+            </a>
+        {% endif %}
+    
+        <h1 class="display-5">Name:  {{report.name}}</h1>
+        <p class="fs-3 text-break">
+                {{report.content}}
+        </p>
+        <p class="fs-3 text-break">
+            {% if report.author.image %}
+                <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(report.author.image.read())}}">
+            {% endif %}
+                {{report.content}}
+        </p>
+        <h1 class="display-5">
+            {{report.streetAddress}} <br>
+            {{report.city}} {{report.state}} {{report.zipcode}}
+        </h1>
+        <p class="fs-3 text-break"> 
+                {{report.content}}
+        </p>
+        <h1 class="display-5">Description: {{report.description}}</h1>
+        <p class="fs-3 text-break">
+                {{rerort.content}}
+        </p>
+        
+    {% else %}
+        <h1 class="display-5">No report</h1>
+    {% endif %}
+    
+    {% endblock %}
+
+
+   <!--{% if clinic.author.image %}
+                <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(clinic.author.image.read())}}">
+            {% endif %} 
+            
+            this is the code for the images, i took it out of 
+            the code but even when the code was still there i didn't see the pictures for some reason---> 

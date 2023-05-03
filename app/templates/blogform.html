@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block body %}
-        <h1></h1>
+        <h1>Hello, here you can come over and express you're thougths!</h1>
 
         <form method=post>
             {{ form.hidden_tag() }}
@@ -21,6 +21,7 @@
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
+            <h5>here you can add the tags that you want to add on the post ;] </h5>
             <p>
                 {{ form.tag.label }} <br>
                 {{ form.tag(size=64) }}
